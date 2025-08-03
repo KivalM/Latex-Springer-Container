@@ -19,8 +19,10 @@
 %\renewcommand\UrlFont{\color{blue}\rmfamily}
 %\urlstyle{rm}
 %
+% \usepackage[backend=bibtex, style=numeric-comp, sorting=none]{natbib}
 \usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}
-\addbibresource{bibliography.bib} 
+\addbibresource{bibliography.bib}
+% \bibliographystyle{splncs04}
 \begin{document}
 %
 \title{Contribution Title}
@@ -54,7 +56,7 @@
 \subsection{A Subsection Sample}
 Please note that the first paragraph of a section or subsection is
 not indented. The first paragraph that follows a table, figure,
-equation etc. does not need an indent, either. \textcite{example}
+equation etc. does not need an indent, either. \cite{example}
 
 Subsequent paragraphs, however, are indented.
 
@@ -126,4 +128,5 @@ and a homepage~\cite{ref_url1}. Multiple citations are grouped
 \end{credits}
 
 \printbibliography
+% \bibliography{bibliography}
 \end{document}
