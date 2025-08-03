@@ -1,0 +1,80 @@
+{
+    "name": "latex-dev",
+    "dockerComposeFile": [
+      "docker-compose.yml"
+    ],
+    "service": "vscode",
+    "runServices": [
+      "vscode"
+    ],
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "james-yu.latex-workshop",
+          "tecosaur.latex-utilities",
+          "shardulm94.trailing-spaces",
+          "stkb.rewrap",
+          "valentjn.vscode-ltex"
+        ],
+        "settings": {
+          // General settings
+          "files.eol": "\n",
+          "editor.wordWrap": "on",
+          // Latex settings
+          "latex-workshop.linting.lacheck.enabled": true,
+          "latex-workshop.linting.lacheck.exec.path": "lacheck",
+          "latex-workshop.latex.clean.subfolder.enabled": true,
+          "latex-workshop.latex.autoClean.run": "onBuilt",
+          "latex-workshop.docker.enabled": false,
+          "latex-workshop.latex.search.rootFiles.include": [
+            "*.tex"
+          ],
+          "editor.formatOnSave": true,
+          "files.associations": {
+            "*.tex": "latex"
+          },
+          "latex-workshop.formatting.latexindent.path": "latexindent",
+          "latex-workshop.formatting.latexindent.args": [
+            "-c",
+            "%DIR%/",
+            "%TMPFILE%",
+            "-y=defaultIndent: '%INDENT%'"
+          ],
+          // "latex-utilities.zotero.zoteroUrl": "http://host.docker.internal:23119",
+          "ltex.language": "en-ZA",
+          "ltex.additionalRules.motherTongue": "en-ZA",
+          "latex-workshop.latex.outDir": "./output",
+          "latex-workshop.formatting.latex": "latexindent",
+          "latex-workshop.latex.recipe.default": "first",
+          "latex-workshop.latex.tools": [
+            {
+              "name": "latexmk",
+              "command": "latexmk",
+              "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+              ],
+              "env": {}
+            }
+          ],
+          "latex-workshop.latex.recipes": [
+            {
+              "name": "latexmk 🔃",
+              "tools": [
+                "latexmk"
+              ]
+            }
+          ]
+        }
+      },
+      "remoteUser": "${localEnv:USER}",
+      "containerUser": "${localEnv:USER}"
+    }
+  }
